@@ -6,7 +6,6 @@ A hands-on Security Operations Centre (SOC) lab built in Azure to demonstrate se
 
 The goal of this project is to build a small SOC environment where security events can be generated, detected, collected, analysed and displayed through a central SIEM platform.
 
-**
 The environment includes:
 - Wazuh SIEM
 - Suricata IDS
