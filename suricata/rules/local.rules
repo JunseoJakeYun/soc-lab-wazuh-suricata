@@ -1,5 +1,6 @@
 # ============================================================
 # SOC LAB - Custom Suricata Detection Rules
+# Location : SOC-IDS-01 /var/lib/suricata/rules/local.rules
 # ============================================================
 #
 # Purpose:
