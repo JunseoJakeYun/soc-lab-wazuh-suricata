@@ -18,12 +18,12 @@ Wazuh Dashboard.
 ## 3. Detection Rule
 
 Suricata uses the following custom rule:
-
+```
 alert icmp any any -> $HOME_NET any
 (msg:"SOC LAB - ICMP Echo Request Detected";
 sid:1000001;
 rev:1;)
-
+```
 ### Rule Explanation
 
 - **Protocol:** ICMP
@@ -57,11 +57,14 @@ Example alert:
 ## 6. Suricata to Wazuh Integration
 
 A custom Python service monitors `eve.json` and filters events where:
+```
 event_type = alert
+```
 
 The filtered alerts are written to:
+```
 /var/log/suricata/wazuh-alerts.json
-
+```
 
 The Wazuh Agent monitors this file and forwards the events to the Wazuh Manager.
 
@@ -69,11 +72,12 @@ The Wazuh Agent monitors this file and forwards the events to the Wazuh Manager.
 
 The Wazuh Agent on `SOC-IDS-01` monitors the filtered Suricata alert file using:
 
+```
 <localfile>
   <log_format>json</log_format>
   <location>/var/log/suricata/wazuh-alerts.json</location>
 </localfile>
-
+```
 
 The Agent forwards the event to the Wazuh Manager over TCP port 1514.
 
