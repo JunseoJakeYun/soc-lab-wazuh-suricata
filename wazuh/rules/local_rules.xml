@@ -1,1 +1,42 @@
+#    ============================================================
+#     SOC LAB - Custom Wazuh Detection Rules
+#     ============================================================
+#
+#     Purpose:
+#     Custom rules created for the SOC lab to detect security
+#     events that require additional correlation.
+#
+#     Detection covered:
+#     - SSH brute-force activity
+#
+#     Rule flow:
+#
+#     Wazuh rule 5760
+#          ↓
+#     Multiple authentication failures
+#          ↓
+#     Rule 100200
+#          ↓
+#     Same source IP
+#          ↓
+#     5 failures within 120 seconds
+#          ↓
+#     Level 10 SSH brute-force alert
+#     ============================================================ -->
 
+<group name="local,syslog,sshd,">
+
+
+#  SSH brute-force detection
+#
+#  Triggers when Wazuh detects 5 SSH authentication failures
+#  from the same source IP within 120 seconds.
+
+
+  <rule id="100200" level="10" frequency="5" timeframe="120">
+    <if_matched_sid>5760</if_matched_sid>
+    <same_srcip />
+    <description>SSH Brute Force Attack - 5 failed login attempts from the same source IP within 120 seconds</description>
+  </rule>
+
+</group>
