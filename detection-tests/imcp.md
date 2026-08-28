@@ -6,6 +6,8 @@ Test that Suricata can detect ICMP echo requests and that the
 alert is successfully forwarded to Wazuh and displayed in the
 Wazuh Dashboard.
 
+---
+
 ## 2. Lab Environment
 
 - IDS Server: SOC-IDS-01
@@ -16,6 +18,8 @@ Wazuh Dashboard.
 - Protocol: ICMP
 
 ## 3. Detection Rule
+
+---
 
 Suricata uses the following custom rule:
 ```
@@ -33,12 +37,16 @@ rev:1;)
 - **SID:** 1000001
 - **Revision:** 1
 
+---
+
 ## 4. Test Procedure
 
 An ICMP ping was generated towards the destination server:
 <img width="671" height="191" alt="pingtodestination" src="https://github.com/user-attachments/assets/da26b12e-2611-4cef-8a7e-db3eb0311887" />
 
 The ping generated ICMP echo request packets that were inspected by Suricata.
+
+---
 
 ## 5. Suricata Detection
 
@@ -52,7 +60,7 @@ Example alert:
 #From fast.log
 <img width="1494" height="99" alt="suricatadetecticmp" src="https://github.com/user-attachments/assets/8a5eea36-3e40-4201-9bbe-c60e9848319c" />
 
-
+---
 
 ## 6. Suricata to Wazuh Integration
 
@@ -68,6 +76,8 @@ The filtered alerts are written to:
 
 The Wazuh Agent monitors this file and forwards the events to the Wazuh Manager.
 
+---
+
 ## 7. Wazuh Agent
 
 The Wazuh Agent on `SOC-IDS-01` monitors the filtered Suricata alert file using:
@@ -81,6 +91,7 @@ The Wazuh Agent on `SOC-IDS-01` monitors the filtered Suricata alert file using:
 
 The Agent forwards the event to the Wazuh Manager over TCP port 1514.
 
+---
 
 ## 8. Wazuh Dashboard
 
@@ -90,6 +101,7 @@ The Suricata alert was successfully received by Wazuh and displayed in the Wazuh
 
 The dashboard shows the Suricata-generated ICMP alert and associated event information.
 
+---
 
 ## 9. Result
 
@@ -101,7 +113,7 @@ The ICMP traffic was detected by Suricata, filtered by the custom
 Python service, collected by the Wazuh Agent, processed by the
 Wazuh Manager, and displayed in the Wazuh Dashboard.
 
-
+---
 
 ## 10. Evidence
 
