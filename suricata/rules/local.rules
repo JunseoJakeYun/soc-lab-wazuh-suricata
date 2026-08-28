@@ -1,3 +1,26 @@
+# ============================================================
+# SOC LAB - Custom Suricata Detection Rules
+# ============================================================
+#
+# Purpose:
+# This file contains custom Suricata IDS rules created for
+# the SOC lab. These rules are designed to detect suspicious
+# network activity by making several basic traffic 
+# and generate alerts for investigation through the Wazuh SIEM.
+#
+# Detection rules included:
+# 1. ICMP Echo Request Detection
+# 2. Possible HTTP request with including 'admin' 
+# 3. Possible TCP Port Scan Detection
+# 4. Possible SSH Brute Force / Repeated Connection Attempts
+#
+# Alert flow:
+# Network Traffic -> Suricata IDS -> Wazuh Agent
+# -> Wazuh Manager -> Wazuh Dashboard
+#
+# ============================================================
+
+
 # Detect ICMP echo requests (ping)
 alert icmp any any -> $HOME_NET any (
     msg:"SOC LAB - ICMP Echo Request Detected";
