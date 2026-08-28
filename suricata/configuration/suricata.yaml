@@ -1,5 +1,6 @@
 # ============================================================
 # SOC LAB - Suricata Configuration
+# Location : SOC-IDS-01 /etc/suricata/suricata.yaml
 # ============================================================
 #
 # Purpose:
