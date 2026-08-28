@@ -1,3 +1,5 @@
+# ICMP Detection Test - HTTP / Suspicious path to administrator page 
+
 ## 1. Objective
 
 The objective of this test is to verify that the SOC lab can detect
