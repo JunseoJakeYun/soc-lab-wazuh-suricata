@@ -1,5 +1,6 @@
 #    ============================================================
 #     SOC LAB - Custom Wazuh Detection Rules
+#     Location : SOC-WAZUH-01 /var/ossec/etc/rules/local_rules.xml
 #     ============================================================
 #
 #     Purpose:
