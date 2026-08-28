@@ -1,0 +1,12 @@
+### How Suricata Configuration Works
+
+The `suricata.yaml` configuration controls how Suricata monitors and processes network traffic.
+
+- **`eth0`** — Network interface monitored by Suricata.
+- **`HOME_NET`** — Defines the internal networks being monitored.
+- **`local.rules`** — Contains custom IDS rules for detecting ICMP traffic, http request with 'admin', possible TCP port scans, and repeated SSH connection attempts.
+- **`eve.json`** — Stores Suricata security events in JSON format for integration with Wazuh.
+
+**Detection flow:**
+
+`Network Traffic` → `eth0` → `Suricata` → `local.rules` → `eve.json` → `Wazuh`
