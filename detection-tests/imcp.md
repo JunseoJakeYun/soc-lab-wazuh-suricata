@@ -1,12 +1,12 @@
 # ICMP Detection Test
 
-## Objective
+## 1. Objective
 
 Test that Suricata can detect ICMP echo requests and that the
 alert is successfully forwarded to Wazuh and displayed in the
 Wazuh Dashboard.
 
-## Lab Environment
+## 2. Lab Environment
 
 - IDS Server: SOC-IDS-01
 - IDS: Suricata
@@ -15,7 +15,7 @@ Wazuh Dashboard.
 - Destination: 172.16.0.4
 - Protocol: ICMP
 
-## Detection Rule
+## 3. Detection Rule
 
 Suricata uses the following custom rule:
 
