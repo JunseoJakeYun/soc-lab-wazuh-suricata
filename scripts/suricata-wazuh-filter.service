@@ -1,0 +1,46 @@
+# ============================================================
+# SOC LAB - Suricata to Wazuh Alert Filter Service
+# ============================================================
+#
+# Purpose:
+# This systemd service runs the Python filter that connects
+# Suricata with the Wazuh Agent.
+#
+# The Python script monitors Suricata's eve.json file and
+# filters only security alerts (event_type: alert).
+
+[Unit]
+
+# Name shown by systemctl
+Description=Suricata to Wazuh Alert Filter
+
+# Start this service after Suricata has started
+After=suricata.service
+
+# Request that Suricata is also started
+Wants=suricata.service
+
+
+[Service]
+
+# The Python script runs continuously in the foreground
+Type=simple
+
+# Python filter application
+ExecStart=/usr/local/bin/suricata-wazuh-filter.py
+
+# Automatically restart the filter if it stops or crashes
+Restart=always
+
+# Wait 5 seconds before restarting
+RestartSec=5
+
+# The service runs with root privileges so it can access
+# the Suricata log files
+User=root
+
+
+[Install]
+
+# Start the service automatically during normal system startup
+WantedBy=multi-user.target
