@@ -1,0 +1,55 @@
+# ============================================================
+# SOC LAB - Suricata Configuration
+# ============================================================
+#
+# Purpose:
+# This file documents the key Suricata configuration used in
+# the SOC lab. Suricata monitors network traffic on SOC-IDS-01,
+# detects suspicious activity using custom IDS rules, and
+# generates JSON events for integration with Wazuh.
+#
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Network Configuration
+# ------------------------------------------------------------
+# Define the internal networks that Suricata considers
+# HOME_NET. EXTERNAL_NET represents traffic outside HOME_NET.
+
+vars:
+  address-groups:
+    HOME_NET: "[192.168.0.0/16,10.0.0.0/8,172.16.0.0/12]"
+    EXTERNAL_NET: "!$HOME_NET"
+
+
+# ------------------------------------------------------------
+# Suricata Network Interface
+# ------------------------------------------------------------
+# Suricata monitors eth0 for network traffic.
+
+af-packet:
+  - interface: eth0
+    cluster-id: 99
+
+
+# ------------------------------------------------------------
+# EVE JSON Logging
+# ------------------------------------------------------------
+# Suricata writes structured security events to eve.json.
+# This file is used as the source for the Wazuh integration.
+
+outputs:
+  - eve-log:
+      enabled: yes
+      filetype: regular
+      filename: eve.json
+
+
+# ------------------------------------------------------------
+# Custom Detection Rules
+# ------------------------------------------------------------
+# local.rules contains the custom SOC lab IDS rules.
+
+rule-files:
+  - local.rules
