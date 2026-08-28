@@ -1,4 +1,4 @@
-# ICMP Detection Test - HTTP / Suspicious path to administrator page 
+# HTTP Detection Test / Suspicious path to administrator page 
 
 ## 1. Objective
 
