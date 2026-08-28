@@ -1,36 +1,38 @@
 #!/usr/bin/env python3
 
 """
-SOC LAB - Suricata to Wazuh Alert Filter
-
-Purpose:
-    Monitor Suricata's eve.json file and forward only
-    Suricata alert events to a separate JSON file monitored
-    by the Wazuh Agent.
-
-Data flow:
-
-    Suricata
-        |
-        v
-    eve.json
-        |
-        v
-    This script
-        |
-        | event_type == "alert"
-        v
-    wazuh-alerts.json
-        |
-        v
-    Wazuh Agent
-        |
-        v
-    Wazuh Manager
-        |
-        v
-    Wazuh Dashboard
-"""
+#===========================================================
+# SOC LAB - Suricata to Wazuh Alert Filter
+# Location : SOC-IDS-01 /usr/local/bin/suricata-wazuh-filter.py
+#===========================================================
+# Purpose:
+#    Monitor Suricata's eve.json file and forward only
+#    Suricata alert events to a separate JSON file monitored
+#    by the Wazuh Agent.
+#
+#Data flow:
+#
+#    Suricata
+#        |
+#        v
+#    eve.json
+#        |
+#        v
+#    This script
+#        |
+#        | event_type == "alert"
+#        v
+#    wazuh-alerts.json
+#        |
+#        v
+#    Wazuh Agent
+#        |
+#        v
+#    Wazuh Manager
+#        |
+#        v
+#    Wazuh Dashboard
+# """
 
 import json
 import time
