@@ -1,0 +1,8 @@
+# Detect ICMP echo requests (ping)
+alert icmp any any -> $HOME_NET any (
+    msg:"SOC LAB - ICMP Echo Request Detected";
+    sid:1000001;
+    rev:1;
+)
+
+
